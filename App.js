@@ -1,16 +1,17 @@
 import React from "react";
-import { Image } from "react-native";
-import { AppLoading } from "expo";
-import { Asset } from "expo-asset";
-import { Block, GalioProvider } from "galio-framework";
-import { NavigationContainer } from "@react-navigation/native";
-
+import {AsyncStorage, Image} from "react-native";
+import {Asset} from "expo-asset";
+import {Block, GalioProvider} from "galio-framework";
+import {NavigationContainer} from "@react-navigation/native";
 // Before rendering any navigation stack
-import { enableScreens } from "react-native-screens";
+import {enableScreens} from "react-native-screens";
+import Screens from "./navigation/Screens";
+import {argonTheme, articles, Images} from "./constants";
+import Login from "./screens/Login";
+import axios from "react-native-axios";
+
 enableScreens();
 
-import Screens from "./navigation/Screens";
-import { Images, articles, argonTheme } from "./constants";
 
 // cache app images
 const assetImages = [
@@ -38,29 +39,86 @@ function cacheImages(images) {
 
 export default class App extends React.Component {
   state = {
-    isLoadingComplete: false
+    isLoadingComplete: false,
+    isAuthenticate: false
   };
 
+  /**
+   * Get auth token.
+   *
+   * @return {Promise<string>}
+   */
+  getToken = async () => {
+    try {
+      const value = await AsyncStorage.getItem('Token');
+      if (value !== null) {
+        // We have data!!
+        return value
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async componentDidMount() {
+    axios({
+      method: "get",
+      url: "http://192.168.0.143:8000/accounts/api/v1/get_user/",
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'accept': 'application/json',
+        'Authorization': 'Token ' + await this.getToken()
+      }
+    })
+      .then(
+        (response) => {
+          this.setState({
+            isAuthenticate: true,
+            user: response.data
+          });
+        }).catch(e => {
+      console.log(e)
+    });
+  }
+
   render() {
-    if (!this.state.isLoadingComplete) {
+    if (!this.state.isAuthenticate) {
       return (
-        <AppLoading
-          startAsync={this._loadResourcesAsync}
-          onError={this._handleLoadingError}
-          onFinish={this._handleFinishLoading}
-        />
-      );
+        <Login/>
+      )
     } else {
+      // if (!this.state.isLoadingComplete) {
+      //   return (
+      //     <AppLoading
+      //       startAsync={this._loadResourcesAsync}
+      //       onError={this._handleLoadingError}
+      //       onFinish={this._handleFinishLoading}
+      //     />
+      //   );
+      // } else {
       return (
         <NavigationContainer>
           <GalioProvider theme={argonTheme}>
             <Block flex>
-              <Screens />
+              <Screens/>
             </Block>
           </GalioProvider>
         </NavigationContainer>
-      );
+      )
+      // }
     }
+
+
+    //   return (
+    //     <NavigationContainer>
+    //       <GalioProvider theme={argonTheme}>
+    //         <Block flex>
+    //           <Screens />
+    //         </Block>
+    //       </GalioProvider>
+    //     </NavigationContainer>
+    //   );
+    // }
   }
 
   _loadResourcesAsync = async () => {
@@ -74,6 +132,6 @@ export default class App extends React.Component {
   };
 
   _handleFinishLoading = () => {
-    this.setState({ isLoadingComplete: true });
+    this.setState({isLoadingComplete: true});
   };
 }

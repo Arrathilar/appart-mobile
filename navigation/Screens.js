@@ -1,29 +1,23 @@
 import React from "react";
-import { Easing, Animated, Dimensions } from "react-native";
+import {Dimensions} from "react-native";
 
-import { createStackNavigator } from "@react-navigation/stack";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
-import { Block } from "galio-framework";
-
+import {createStackNavigator} from "@react-navigation/stack";
+import {createDrawerNavigator} from "@react-navigation/drawer";
+import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 // screens
 import Home from "../screens/Home";
-import Onboarding from "../screens/Onboarding";
 import Pro from "../screens/Pro";
 import Profile from "../screens/Profile";
-import Register from "../screens/Register";
 import Elements from "../screens/Elements";
 import Articles from "../screens/Articles";
 // drawer
 import CustomDrawerContent from "./Menu";
-
 // header for screens
-import { Icon, Header } from "../components";
-import { argonTheme, tabs } from "../constants";
+import {Header} from "../components";
 import Users from "../screens/Users";
+import Register from "../screens/Register";
 
-const { width } = Dimensions.get("screen");
+const {width} = Dimensions.get("screen");
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -36,17 +30,17 @@ function ElementsStack(props) {
         name="Elements"
         component={Elements}
         options={{
-          header: ({ navigation, scene }) => (
-            <Header title="Elements" navigation={navigation} scene={scene} />
+          header: ({navigation, scene}) => (
+            <Header title="Elements" navigation={navigation} scene={scene}/>
           ),
-          cardStyle: { backgroundColor: "#F8F9FE" }
+          cardStyle: {backgroundColor: "#F8F9FE"}
         }}
       />
-            <Stack.Screen
+      <Stack.Screen
         name="Pro"
         component={Pro}
         options={{
-          header: ({ navigation, scene }) => (
+          header: ({navigation, scene}) => (
             <Header
               title=""
               back
@@ -70,17 +64,17 @@ function ArticlesStack(props) {
         name="Articles"
         component={Articles}
         options={{
-          header: ({ navigation, scene }) => (
-            <Header title="Articles" navigation={navigation} scene={scene} />
+          header: ({navigation, scene}) => (
+            <Header title="Articles" navigation={navigation} scene={scene}/>
           ),
-          cardStyle: { backgroundColor: "#F8F9FE" }
+          cardStyle: {backgroundColor: "#F8F9FE"}
         }}
       />
-            <Stack.Screen
+      <Stack.Screen
         name="Pro"
         component={Pro}
         options={{
-          header: ({ navigation, scene }) => (
+          header: ({navigation, scene}) => (
             <Header
               title=""
               back
@@ -104,7 +98,7 @@ function ProfileStack(props) {
         name="Profile"
         component={Profile}
         options={{
-          header: ({ navigation, scene }) => (
+          header: ({navigation, scene}) => (
             <Header
               transparent
               white
@@ -113,15 +107,15 @@ function ProfileStack(props) {
               scene={scene}
             />
           ),
-          cardStyle: { backgroundColor: "#FFFFFF" },
+          cardStyle: {backgroundColor: "#FFFFFF"},
           headerTransparent: true
         }}
       />
-            <Stack.Screen
+      <Stack.Screen
         name="Pro"
         component={Pro}
         options={{
-          header: ({ navigation, scene }) => (
+          header: ({navigation, scene}) => (
             <Header
               title=""
               back
@@ -145,7 +139,7 @@ function HomeStack(props) {
         name="Home"
         component={Home}
         options={{
-          header: ({ navigation, scene }) => (
+          header: ({navigation, scene}) => (
             <Header
               title="Home"
               search
@@ -154,14 +148,14 @@ function HomeStack(props) {
               scene={scene}
             />
           ),
-          cardStyle: { backgroundColor: "#F8F9FE" }
+          cardStyle: {backgroundColor: "#F8F9FE"}
         }}
       />
       <Stack.Screen
         name="Pro"
         component={Pro}
         options={{
-          header: ({ navigation, scene }) => (
+          header: ({navigation, scene}) => (
             <Header
               title=""
               back
@@ -185,14 +179,14 @@ function UsersStack(props) {
         name="Users"
         component={Users}
         options={{
-          header: ({ navigation, scene }) => (
+          header: ({navigation, scene}) => (
             <Header
               title="Users"
               navigation={navigation}
               scene={scene}
             />
           ),
-          cardStyle: { backgroundColor: "#F8F9FE" }
+          cardStyle: {backgroundColor: "#F8F9FE"}
         }}
       />
     </Stack.Navigator>
@@ -202,14 +196,7 @@ function UsersStack(props) {
 export default function OnboardingStack(props) {
   return (
     <Stack.Navigator mode="card" headerMode="none">
-      <Stack.Screen
-        name="Onboarding"
-        component={Onboarding}
-        option={{
-          headerTransparent: true
-        }}
-      />
-      <Stack.Screen name="App" component={AppStack} />
+      <Stack.Screen name="App" component={AppStack}/>
     </Stack.Navigator>
   );
 }
@@ -217,7 +204,7 @@ export default function OnboardingStack(props) {
 function AppStack(props) {
   return (
     <Drawer.Navigator
-      style={{ flex: 1 }}
+      style={{flex: 1}}
       drawerContent={props => <CustomDrawerContent {...props} />}
       drawerStyle={{
         backgroundColor: "white",
@@ -245,12 +232,12 @@ function AppStack(props) {
       }}
       initialRouteName="Home"
     >
-      <Drawer.Screen name="Home" component={HomeStack} />
-      <Drawer.Screen name="Profile" component={ProfileStack} />
-      <Drawer.Screen name="Users" component={UsersStack} />
-      <Drawer.Screen name="Account" component={Register} />
-      <Drawer.Screen name="Elements" component={ElementsStack} />
-      <Drawer.Screen name="Articles" component={ArticlesStack} />
+      <Drawer.Screen name="Home" component={HomeStack}/>
+      <Drawer.Screen name="Profile" component={ProfileStack}/>
+      <Drawer.Screen name="Users" component={UsersStack}/>
+      <Drawer.Screen name="Account" component={Register}/>
+      <Drawer.Screen name="Elements" component={ElementsStack}/>
+      <Drawer.Screen name="Articles" component={ArticlesStack}/>
     </Drawer.Navigator>
   );
 }
