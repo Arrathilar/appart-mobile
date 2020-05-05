@@ -7,6 +7,7 @@ import {Block, Button, Icon, Input, Text, theme} from "galio-framework";
 //argon
 import {argonTheme} from "../constants/";
 import {Formik} from "formik";
+import * as env from "../env.json"
 
 const {width} = Dimensions.get("screen");
 
@@ -34,7 +35,7 @@ class Login extends React.Component {
   handleSubmit(values) {
     axios({
       method: "post",
-      url: `http://192.168.0.143:8000/rest-auth/login/`,
+      url: env.REACT_APP_LOGIN,
       data: values,
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',

@@ -8,6 +8,7 @@ import {enableScreens} from "react-native-screens";
 import Screens from "./navigation/Screens";
 import {argonTheme, articles, Images} from "./constants";
 import Login from "./screens/Login";
+import * as env from "./env.json"
 import axios from "react-native-axios";
 
 enableScreens();
@@ -63,7 +64,7 @@ export default class App extends React.Component {
   async componentDidMount() {
     axios({
       method: "get",
-      url: "http://192.168.0.143:8000/accounts/api/v1/get_user/",
+      url: env.REACT_APP_USER_DATA,
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'accept': 'application/json',
