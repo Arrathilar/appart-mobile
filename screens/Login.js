@@ -1,5 +1,5 @@
 import React from "react";
-import {AsyncStorage, Dimensions, StyleSheet, View} from "react-native";
+import {Dimensions, StyleSheet, View} from "react-native";
 import axios from "react-native-axios"
 import * as Yup from 'yup';
 //galio
