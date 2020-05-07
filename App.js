@@ -10,6 +10,9 @@ import {argonTheme, articles, Images} from "./constants";
 import Login from "./screens/Login";
 import * as env from "./env.json"
 import axios from "react-native-axios";
+import {MenuProvider} from 'react-native-popup-menu';
+import {UserContext} from "./globalContext/UserContext";
+import {AppLoading} from "expo";
 
 enableScreens();
 
@@ -41,85 +44,30 @@ function cacheImages(images) {
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
-    isAuthenticate: false
   };
 
-  /**
-   * Get auth token.
-   *
-   * @return {Promise<string>}
-   */
-  getToken = async () => {
-    try {
-      const value = await AsyncStorage.getItem('Token');
-      if (value !== null) {
-        // We have data!!
-        return value
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  async componentDidMount() {
-    axios({
-      method: "get",
-      url: env.REACT_APP_USER_DATA,
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
-        'accept': 'application/json',
-        'Authorization': 'Token ' + await this.getToken()
-      }
-    })
-      .then(
-        (response) => {
-          this.setState({
-            isAuthenticate: true,
-            user: response.data
-          });
-        }).catch(e => {
-      console.log(e)
-    });
-  }
-
   render() {
-    if (!this.state.isAuthenticate) {
+      if (!this.state.isLoadingComplete) {
+        return (
+          <AppLoading
+            startAsync={this._loadResourcesAsync}
+            onError={this._handleLoadingError}
+            onFinish={this._handleFinishLoading}
+          />
+        );
+      } else {
       return (
-        <Login/>
+        <MenuProvider>
+          <NavigationContainer>
+            <GalioProvider theme={argonTheme}>
+              <Block flex>
+                <Screens {...this.props}/>
+              </Block>
+            </GalioProvider>
+          </NavigationContainer>
+        </MenuProvider>
       )
-    } else {
-      // if (!this.state.isLoadingComplete) {
-      //   return (
-      //     <AppLoading
-      //       startAsync={this._loadResourcesAsync}
-      //       onError={this._handleLoadingError}
-      //       onFinish={this._handleFinishLoading}
-      //     />
-      //   );
-      // } else {
-      return (
-        <NavigationContainer>
-          <GalioProvider theme={argonTheme}>
-            <Block flex>
-              <Screens/>
-            </Block>
-          </GalioProvider>
-        </NavigationContainer>
-      )
-      // }
     }
-
-
-    //   return (
-    //     <NavigationContainer>
-    //       <GalioProvider theme={argonTheme}>
-    //         <Block flex>
-    //           <Screens />
-    //         </Block>
-    //       </GalioProvider>
-    //     </NavigationContainer>
-    //   );
-    // }
   }
 
   _loadResourcesAsync = async () => {

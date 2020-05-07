@@ -10,6 +10,7 @@ function CustomDrawerContent({drawerPosition, navigation, profile, focused, stat
   const insets = useSafeArea();
   const screens = [
     "Home",
+    "Users"
   ];
   return (
     <Block

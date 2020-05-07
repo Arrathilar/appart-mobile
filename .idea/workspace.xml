@@ -26,11 +26,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2d24c94-862e-458d-bb32-921821541208" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/babel.rc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/env.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ProfileButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/globalContext/UserContext.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/Menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/Screens.js" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/Screens.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/Login.js" afterDir="false" />
     </list>
@@ -40,6 +42,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JsFlowSettings">
@@ -65,7 +72,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="$USER_HOME$/.nvm/versions/node/v12.16.3/bin/node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
     <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
@@ -119,6 +126,18 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -141,11 +160,16 @@
       <workItem from="1588669707211" duration="980000" />
       <workItem from="1588670782350" duration="389000" />
       <workItem from="1588671196631" duration="12701000" />
+      <workItem from="1588831996969" duration="652000" />
+      <workItem from="1588835362554" duration="4000" />
+      <workItem from="1588856199405" duration="379000" />
+      <workItem from="1588856601914" duration="605000" />
+      <workItem from="1588858348453" duration="5163000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -164,6 +188,7 @@
                   </entry>
                 </map>
               </option>
+              <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
@@ -183,10 +208,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="712" y="270" width="486" height="498" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1080@0.0.1920.1080" timestamp="1588669897768" />
-    <state x="725" y="97" width="428" height="499" key="FileChooserDialogImpl" timestamp="1588671118320">
+    <state x="723" y="79" width="428" height="499" key="FileChooserDialogImpl" timestamp="1588856266464">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="725" y="97" width="428" height="499" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1588671118320" />
+    <state x="723" y="79" width="428" height="499" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1588856266464" />
     <state width="1878" height="238" key="GridCell.Tab.0.bottom" timestamp="1588691627723">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -251,21 +276,33 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1858" height="195" key="GridCell.Tab.3.right/0.0.1920.1080@0.0.1920.1080" timestamp="1588670685598" />
-    <state x="469" y="159" key="SettingsEditor" timestamp="1588670827320">
+    <state x="461" y="87" key="SettingsEditor" timestamp="1588859456613">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="469" y="159" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1588670827320" />
+    <state x="461" y="87" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1588859456613" />
     <state x="809" y="426" width="288" height="150" key="VCS.ChangelistChooser" timestamp="1588689542772">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="809" y="426" width="288" height="150" key="VCS.ChangelistChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1588689542772" />
+    <state x="962" y="13" width="949" height="1058" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1588856578147">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="962" y="13" width="949" height="1058" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1588856578147" />
     <state x="665" y="351" key="com.intellij.ide.util.TipDialog" timestamp="1588669707993">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="665" y="351" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1588669707993" />
-    <state x="642" y="259" width="813" height="518" key="find.popup" timestamp="1588527846735">
+    <state x="642" y="259" width="813" height="518" key="find.popup" timestamp="1588768643275">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="642" y="259" width="813" height="518" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1588527846735" />
+    <state x="642" y="259" width="813" height="518" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1588768643275" />
+    <state x="622" y="250" width="672" height="677" key="run.anything.popup" timestamp="1588856292061">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="622" y="250" width="672" height="677" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1588856292061" />
+    <state x="623" y="246" width="672" height="678" key="search.everywhere.popup" timestamp="1588856565277">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="246" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1588856565277" />
   </component>
 </project>

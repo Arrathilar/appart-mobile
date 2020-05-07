@@ -1,5 +1,5 @@
 import React from "react";
-import {Dimensions, StyleSheet, View} from "react-native";
+import {AsyncStorage, Dimensions, StyleSheet, View} from "react-native";
 import axios from "react-native-axios"
 import * as Yup from 'yup';
 //galio
@@ -25,8 +25,9 @@ class Login extends React.Component {
    */
   _storeToken = async (token) => {
     try {
-      await AsyncStorage.setItem('Token', token);
-      AsyncStorage.getItem('Token').then(result => console.log(result))
+      await AsyncStorage.setItem('Token', token, () => {
+        this.props.route.params.updateIsAuthenticate("LogIn")
+      })
     } catch (error) {
       console.log(error)
     }
@@ -66,7 +67,7 @@ class Login extends React.Component {
       <Block style={styles.container}>
         <Formik
           onSubmit={values => this.handleSubmit(values)}
-          initialValues={{username: '', password: ''}}
+          initialValues={{username: '0987212959', password: '4815162342'}}
           validationSchema={this.SignupSchema}
         >
           {({
