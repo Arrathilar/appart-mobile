@@ -40,22 +40,16 @@ class Orders extends React.Component {
             .catch(e => console.log(e.response.data))
     }
 
-    moveToDetail(pk) {
-        const {navigate} = this.props.navigation;
-        navigate('OrderDetails', {
-            pk: pk
-        });
-    }
-
     render() {
         if (!this.state.isLoaded) {
             return <Text>Loading...</Text>
         } else {
             return (
                 <Block flex center>
-                    <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom: 30}}>
+                    <ScrollView showsVerticalScrollIndicator={false}
+                                contentContainerStyle={{paddingBottom: 30}}>
                         {this.state.data.results.map((item) => (
-                            <OrderLine item={item}/>
+                            <OrderLine navigation={this.props.navigation} item={item}/>
                         ))}
                     </ScrollView>
                 </Block>

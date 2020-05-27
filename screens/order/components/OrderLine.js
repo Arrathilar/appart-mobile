@@ -11,6 +11,13 @@ export default class OrderLine extends React.Component {
         }
     }
 
+    moveToDetail(pk) {
+        const {navigate} = this.props.navigation;
+        navigate('OrderDetails', {
+            pk: pk
+        });
+    }
+
     render() {
         return (
             <>
