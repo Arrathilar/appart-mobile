@@ -1,5 +1,5 @@
 import React from "react";
-import {AsyncStorage, Dimensions, ScrollView, StyleSheet} from "react-native";
+import {AsyncStorage, Dimensions, RefreshControl, ScrollView, StyleSheet} from "react-native";
 // Galio components
 import {Block, Text, theme} from "galio-framework";
 // Argon themed components
@@ -15,12 +15,13 @@ class Orders extends React.Component {
         data: null,
         isLoaded: false,
         modalVisible: false,
+        refreshing: false
     };
 
     toggleSwitch = switchId =>
         this.setState({[switchId]: !this.state[switchId]});
 
-    async componentDidMount() {
+    _loadData = async () => {
         const token = await AsyncStorage.getItem('Token');
         axios({
             url: env.ORDERS,
@@ -40,6 +41,17 @@ class Orders extends React.Component {
             .catch(e => console.log(e.response.data))
     }
 
+    componentDidMount() {
+        this._loadData()
+    }
+
+    _onRefresh() {
+        this.setState({refreshing: true});
+        this._loadData().then(() => {
+            this.setState({refreshing: false});
+        });
+    }
+
     render() {
         if (!this.state.isLoaded) {
             return <Text>Loading...</Text>
@@ -47,7 +59,11 @@ class Orders extends React.Component {
             return (
                 <Block flex center>
                     <ScrollView showsVerticalScrollIndicator={false}
-                                contentContainerStyle={{paddingBottom: 30}}>
+                                contentContainerStyle={{paddingBottom: 30}}
+                                refreshControl={<RefreshControl
+                                    refreshing={this.state.refreshing}
+                                    onRefresh={this._onRefresh.bind(this)}
+                                />}>
                         {this.state.data.results.map((item) => (
                             <OrderLine navigation={this.props.navigation} item={item}/>
                         ))}

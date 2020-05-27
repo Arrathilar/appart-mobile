@@ -49,9 +49,6 @@ export default class OrderLine extends React.Component {
                         style={[styles.card]}
                         title={this.props.item.work_name}
                         caption={`Статус виконання: ${this.props.item.exec_status}\nІнформація: ${this.props.item.information}`}
-                        imageStyle={styles.card}
-                        imageBlockStyle={{padding: theme.SIZES.BASE / 2}}
-                        image="https://images.unsplash.com/photo-1497802176320-541c8e8de98d?&w=1600&h=900&fit=crop&crop=entropy&q=300"
                     />
                 </TouchableOpacity>
             </>
